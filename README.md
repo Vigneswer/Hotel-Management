@@ -58,5 +58,5 @@ Reservation lists cap page size at 100 and offset at 10,000. Availability scans 
 
 Before real guest operations, resolve physical room assignment/continuity, housekeeping and out-of-service inventory, no-show and late/early stay policies, staff MFA and account recovery, abuse controls, guest verification, price/tax/cancellation terms, privacy/retention, backups and restore, security/accessibility reviews, load/failover tests, and operator training. Payments/refunds need a separate design.
 
-See [docs/architecture.md](docs/architecture.md), [docs/database.md](docs/database.md), [docs/operations.md](docs/operations.md), [docs/contracts.md](docs/contracts.md), and [docs/api.md](docs/api.md) for implementation details and route contracts.
+For a beginner-friendly presentation and interview guide, see [docs/presentation-study-guide.md](docs/presentation-study-guide.md). Also see [docs/architecture.md](docs/architecture.md), [docs/database.md](docs/database.md), [docs/operations.md](docs/operations.md), [docs/contracts.md](docs/contracts.md), and [docs/api.md](docs/api.md) for deeper implementation details and route contracts.
 
