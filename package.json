@@ -1,0 +1,22 @@
+{
+  "name": "hotel-management-system",
+  "private": true,
+  "packageManager": "pnpm@10.20.0",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @hotel/backend --filter @hotel/frontend dev",
+    "dev:backend": "pnpm --filter @hotel/backend dev",
+    "dev:frontend": "pnpm --filter @hotel/frontend dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test && pnpm exec vitest run tests/integration",
+    "test:integration": "pnpm db:up && NODE_ENV=test MONGODB_DATABASE=hotel_test MONGODB_URI=mongodb://localhost:27017/hotel_test?replicaSet=rs0 pnpm db:test:reset && NODE_ENV=test RUN_REPLICA_SET_TESTS=1 MONGODB_DATABASE=hotel_test MONGODB_URI=mongodb://localhost:27017/hotel_test?replicaSet=rs0 CSRF_SECRET=local-integration-only-secret-must-be-at-least-32-characters WEB_ORIGIN=http://localhost:5173 API_ORIGIN=http://localhost:3001 pnpm --filter @hotel/backend test",
+    "lint": "pnpm -r lint",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "db:up": "docker compose up -d && MONGODB_URI=mongodb://localhost:27017/hotel_dev?replicaSet=rs0 MONGODB_DATABASE=hotel_dev pnpm --filter @hotel/backend db:wait",
+    "db:down": "docker compose down",
+    "db:migrate": "pnpm --filter @hotel/backend db:migrate",
+    "db:seed": "pnpm --filter @hotel/backend db:seed",
+    "db:test:reset": "pnpm --filter @hotel/backend db:test:reset"
+  },
+  "devDependencies": { "typescript": "^5.9.3", "vitest": "^3.2.4" }
+}
